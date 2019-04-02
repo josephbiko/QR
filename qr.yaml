@@ -1,0 +1,96 @@
+inflow:
+  type: entity
+  derivative:
+    - +
+    - 0
+  current_derivative: +
+
+  magnitude:
+    -
+      val: +
+      type: interval
+    -
+      val: 0
+      type: point
+  current_magnitude: +
+
+volume:
+  type: entity
+  derivative:
+    - +
+    - 0
+    - "-"
+  current_derivative: 0
+
+  magnitude:
+    -
+      val: max
+      type: point
+    -
+      val: +
+      type: interval
+    -
+      val: 0
+      type: point
+  current_magnitude: 0
+
+outflow:
+  type: entity
+  derivative:
+    - +
+    - 0
+    - "-"
+  current_derivative: 0
+
+  magnitude:
+    -
+      val: max
+      type: point
+    -
+      val: +
+      type: interval
+    -
+      val: 0
+      type: point
+  current_magnitude: 0
+
+
+
+rel1:
+  type: relation
+  relation: I+
+  from: inflow
+  to: volume
+
+rel2:
+  type: relation
+  relation: I-
+  from: outflow
+  to: volume
+
+rel3:
+  type: relation
+  relation: P+
+  from: volume
+  to: outflow
+
+VC:
+  type: dependency
+  restriction: set
+  from: volume
+  to: outflow
+  from_attr: magnitude
+  to_attr: magnitude
+  from_val: max
+  to_val: max
+
+VC2:
+  type: dependency
+  restriction: set
+  from: volume
+  to: outflow
+  from_attr: magnitude
+  to_attr: magnitude
+  from_val: 0
+  to_val: 0
+

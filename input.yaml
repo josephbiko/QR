@@ -1,0 +1,62 @@
+##yaml
+
+
+ent_obj1:
+  type: entity
+  magnitude:
+    -
+      val: max
+      type: point
+
+    -
+      val: +
+      type: interval
+
+    -
+      val: 0
+      type: point
+  current_magnitude: max
+  derivative:
+    - 0
+    - "-"
+  current_derivative: "-"
+
+ent_obj2:
+  type: entity
+  magnitude:
+    -
+      val: max
+      type: point
+
+    -
+      val: +
+      type: interval
+
+    -
+      val: 0
+      type: point
+
+  current_magnitude: max
+  derivative:
+    - 0
+    - "-"
+  current_derivative: 0
+
+rel1:
+  type: relation
+  relation: P+
+  from: ent_obj1
+  to: ent_obj2
+
+
+dep1:
+  type: dependency
+  restriction: set
+  from: ent_obj1
+  to: ent_obj1
+  from_attr: magnitude
+  to_attr: derivative
+  from_val: 0
+  to_val: 0
+
+
