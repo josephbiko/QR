@@ -1,235 +1,115 @@
 digraph {
-	subgraph "cluster_inflow++outflow00volume00" {
-		1 [label=inflow]
+	subgraph "cluster_ent_obj1max-ent_obj2max0" {
+		1 [label=ent_obj1]
 		2 [label="magnitude
-+"]
+max"]
 		3 [label="derivative
-+"]
+-"]
 		2 -> 1
 		3 -> 1
-		4 [label=volume]
+		4 [label=ent_obj2]
 		5 [label="magnitude
-0"]
+max"]
 		6 [label="derivative
 0"]
 		5 -> 4
 		6 -> 4
-		7 [label=outflow]
-		8 [label="magnitude
-0"]
-		9 [label="derivative
-0"]
-		8 -> 7
-		9 -> 7
-		10 [label="I+"]
-		1 -> 10
-		10 -> 4
-		11 [label="I-"]
-		7 -> 11
-		11 -> 4
+		7 [label="P+"]
+		1 -> 7
+		7 -> 4
 		label=S_0
 	}
-	subgraph "cluster_inflow++outflowmax0volumemax+" {
-		12 [label=outflow]
-		13 [label="magnitude
-max"]
-		14 [label="derivative
-0"]
-		13 -> 12
-		14 -> 12
-		15 [label=volume]
-		16 [label="magnitude
-max"]
-		17 [label="derivative
+	subgraph "cluster_ent_obj1+-ent_obj2+-" {
+		8 [label=ent_obj2]
+		9 [label="magnitude
 +"]
-		16 -> 15
-		17 -> 15
-		18 [label=inflow]
-		19 [label="magnitude
+		10 [label="derivative
+-"]
+		9 -> 8
+		10 -> 8
+		11 [label=ent_obj1]
+		12 [label="magnitude
 +"]
-		20 [label="derivative
-+"]
-		19 -> 18
-		20 -> 18
-		21 [label="I+"]
-		18 -> 21
-		21 -> 15
-		22 [label="I-"]
-		12 -> 22
-		22 -> 15
+		13 [label="derivative
+-"]
+		12 -> 11
+		13 -> 11
+		14 [label="P+"]
+		11 -> 14
+		14 -> 8
 		label=S_1
 	}
-	subgraph "cluster_inflow++outflow00volume++" {
-		23 [label=outflow]
-		24 [label="magnitude
+	subgraph "cluster_ent_obj100ent_obj2+-" {
+		15 [label=ent_obj2]
+		16 [label="magnitude
++"]
+		17 [label="derivative
+-"]
+		16 -> 15
+		17 -> 15
+		18 [label=ent_obj1]
+		19 [label="magnitude
 0"]
-		25 [label="derivative
+		20 [label="derivative
 0"]
-		24 -> 23
-		25 -> 23
-		26 [label=volume]
-		27 [label="magnitude
-+"]
-		28 [label="derivative
-+"]
-		27 -> 26
-		28 -> 26
-		29 [label=inflow]
-		30 [label="magnitude
-+"]
-		31 [label="derivative
-+"]
-		30 -> 29
-		31 -> 29
-		32 [label="I+"]
-		29 -> 32
-		32 -> 26
-		33 [label="I-"]
-		23 -> 33
-		33 -> 26
+		19 -> 18
+		20 -> 18
+		21 [label="P+"]
+		18 -> 21
+		21 -> 15
 		label=S_2
 	}
-	subgraph "cluster_inflow++outflow00volume+0" {
-		34 [label=inflow]
-		35 [label="magnitude
-+"]
-		36 [label="derivative
-+"]
-		35 -> 34
-		36 -> 34
-		37 [label=volume]
-		38 [label="magnitude
-+"]
-		39 [label="derivative
+	subgraph "cluster_ent_obj1+-ent_obj20-" {
+		22 [label=ent_obj2]
+		23 [label="magnitude
 0"]
-		38 -> 37
-		39 -> 37
-		40 [label=outflow]
-		41 [label="magnitude
-0"]
-		42 [label="derivative
-0"]
-		41 -> 40
-		42 -> 40
-		43 [label="I+"]
-		34 -> 43
-		43 -> 37
-		44 [label="I-"]
-		40 -> 44
-		44 -> 37
+		24 [label="derivative
+-"]
+		23 -> 22
+		24 -> 22
+		25 [label=ent_obj1]
+		26 [label="magnitude
++"]
+		27 [label="derivative
+-"]
+		26 -> 25
+		27 -> 25
+		28 [label="P+"]
+		25 -> 28
+		28 -> 22
 		label=S_3
 	}
-	subgraph "cluster_inflow++outflowmax0volume+-" {
-		45 [label=inflow]
-		46 [label="magnitude
-+"]
-		47 [label="derivative
-+"]
-		46 -> 45
-		47 -> 45
-		48 [label=volume]
-		49 [label="magnitude
-+"]
-		50 [label="derivative
--"]
-		49 -> 48
-		50 -> 48
-		51 [label=outflow]
-		52 [label="magnitude
-max"]
-		53 [label="derivative
+	subgraph "cluster_ent_obj100ent_obj20-" {
+		29 [label=ent_obj2]
+		30 [label="magnitude
 0"]
-		52 -> 51
-		53 -> 51
-		54 [label="I+"]
-		45 -> 54
-		54 -> 48
-		55 [label="I-"]
-		51 -> 55
-		55 -> 48
+		31 [label="derivative
+-"]
+		30 -> 29
+		31 -> 29
+		32 [label=ent_obj1]
+		33 [label="magnitude
+0"]
+		34 [label="derivative
+0"]
+		33 -> 32
+		34 -> 32
+		35 [label="P+"]
+		32 -> 35
+		35 -> 29
 		label=S_4
 	}
-	subgraph "cluster_inflow++outflow00volume0-" {
-		56 [label=inflow]
-		57 [label="magnitude
-+"]
-		58 [label="derivative
-+"]
-		57 -> 56
-		58 -> 56
-		59 [label=volume]
-		60 [label="magnitude
-0"]
-		61 [label="derivative
--"]
-		60 -> 59
-		61 -> 59
-		62 [label=outflow]
-		63 [label="magnitude
-0"]
-		64 [label="derivative
-0"]
-		63 -> 62
-		64 -> 62
-		65 [label="I+"]
-		56 -> 65
-		65 -> 59
-		66 [label="I-"]
-		62 -> 66
-		66 -> 59
-		label=S_5
-	}
-	subgraph "cluster_inflow++outflowmax0volume++" {
-		67 [label=outflow]
-		68 [label="magnitude
-max"]
-		69 [label="derivative
-0"]
-		68 -> 67
-		69 -> 67
-		70 [label=volume]
-		71 [label="magnitude
-+"]
-		72 [label="derivative
-+"]
-		71 -> 70
-		72 -> 70
-		73 [label=inflow]
-		74 [label="magnitude
-+"]
-		75 [label="derivative
-+"]
-		74 -> 73
-		75 -> 73
-		76 [label="I+"]
-		73 -> 76
-		76 -> 70
-		77 [label="I-"]
-		67 -> 77
-		77 -> 70
-		label=S_6
-	}
-	S_0 -> S_0
 	S_0 -> S_1
 	S_0 -> S_2
-	S_1 -> S_4
-	S_1 -> S_5
+	S_0 -> S_3
+	S_0 -> S_4
 	S_1 -> S_1
-	S_2 -> S_3
-	S_2 -> S_1
+	S_1 -> S_3
+	S_1 -> S_2
+	S_1 -> S_4
 	S_2 -> S_2
+	S_2 -> S_4
 	S_3 -> S_3
-	S_3 -> S_1
-	S_3 -> S_2
+	S_3 -> S_4
 	S_4 -> S_4
-	S_4 -> S_5
-	S_4 -> S_1
-	S_4 -> S_6
-	S_5 -> S_0
-	S_5 -> S_1
-	S_5 -> S_2
-	S_6 -> S_4
-	S_6 -> S_5
-	S_6 -> S_1
-	S_6 -> S_6
 }

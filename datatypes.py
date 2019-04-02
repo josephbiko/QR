@@ -141,7 +141,8 @@ class Magnitude:
         self.uuid = 0
 
     def set_current(self,val):
-        self.current = val
+        self.current = self.current.copy()
+        self.current.value = val
         self.current_index = self.states.index(val)
 
 
@@ -210,7 +211,8 @@ class State:
     def __hash__(self):
         return hash(self.value)
 
-
+    def copy(self):
+        return State(self.s_type,self.value,self.name,self.order)
 
 class Network:
     counter = 0

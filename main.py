@@ -64,5 +64,5 @@ def render_entitity(ent, graph):
     return graph
 
 
-networks = produce_networks("qr.yaml")
+networks = produce_networks()
 produce_graph(networks)
