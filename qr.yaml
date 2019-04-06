@@ -74,9 +74,9 @@ rel3:
   from: volume
   to: outflow
 
-VC:
+VC1.1:
   type: dependency
-  restriction: set
+  restriction: equal
   from: volume
   to: outflow
   from_attr: magnitude
@@ -84,9 +84,10 @@ VC:
   from_val: max
   to_val: max
 
+
 VC2:
   type: dependency
-  restriction: set
+  restriction: equal
   from: volume
   to: outflow
   from_attr: magnitude

@@ -32,7 +32,7 @@ class Entity:
                 derivative_list.append(d)
 
         if len(derivative_list) == 0:
-            derivative_list = [self.derivative.current]
+            derivative_list = [self.derivative.current.value]
 
         for d in set(derivative_list):
             if not self.magnitude:
@@ -45,12 +45,17 @@ class Entity:
                 magnitudes = [self.magnitude.current]
             elif d == "+":
                 magnitudes = self.magnitude.increase()
+                if len(magnitudes)==1 and magnitudes[0] == self.magnitude.current:
+                    #if there is no increase in the magnitude the derivative should be zero
+                    d = 0
             else:
                 magnitudes = self.magnitude.decrease()
+                if len(magnitudes)==1 and magnitudes[0] == self.magnitude.current:
+                    d = 0
 
             for m in magnitudes:
                 mag = Magnitude(self.magnitude.states, m)
-                der = Derivative(self.derivative.states, d)
+                der = Derivative(self.derivative.states, self.derivative.current.copy(d))
                 entities.append(Entity(self.name, mag, der))
 
         return entities
@@ -125,7 +130,7 @@ class Dependency:
             t_e = entities.get(self.to_e)
             f_val = getattr(f_e, self.from_attr)
             t_val = getattr(t_e, self.to_attr)
-            if self.from_val == f_val.current:
+            if self.from_val == f_val.current and t_val.current is not self.to_val:
                t_val.set_current(self.to_val)
             return True
         raise Exception("restriction unknown",self.restriction)
@@ -169,11 +174,16 @@ class Magnitude:
     def copy(self):
         return Magnitude(self.states, self.current)
 
+    def __eq__(self, other):
+        if isinstance(other,Magnitude):
+            return self.current.value == other.current.value
+        return False
 
 class Derivative:
     def __init__(self, states, current):
         assert current in states, f"{current} unknown"
-
+        if not isinstance(current,State):
+            print(current)
         self.states = states
         self.current = current
         self.current_index = states.index(current)
@@ -182,10 +192,10 @@ class Derivative:
     def copy(self):
         return Derivative(self.states, self.current)
 
-    def set_current(self, val):
-        self.current = val
+    def set_current(self,val):
+        self.current = self.current.copy()
+        self.current.value = val
         self.current_index = self.states.index(val)
-
 
 class State:
     def __init__(self, s_type, value, name="", order=0):
@@ -211,8 +221,9 @@ class State:
     def __hash__(self):
         return hash(self.value)
 
-    def copy(self):
-        return State(self.s_type,self.value,self.name,self.order)
+    def copy(self,val=None):
+        if val is None:val=self.value
+        return State(self.s_type,val,self.name,self.order)
 
 class Network:
     counter = 0
