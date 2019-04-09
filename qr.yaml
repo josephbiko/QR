@@ -3,9 +3,29 @@ inflow:
   derivative:
     - +
     - 0
-  current_derivative: +
+  current_derivative: 0
 
   magnitude:
+    -
+      val: +
+      type: interval
+    -
+      val: 0
+      type: point
+  current_magnitude: 0
+
+volume:
+  type: entity
+  derivative:
+    - +
+    - 0
+    - "-"
+  current_derivative: "-"
+
+  magnitude:
+    -
+      val: max
+      type: point
     -
       val: +
       type: interval
@@ -14,33 +34,13 @@ inflow:
       type: point
   current_magnitude: +
 
-volume:
-  type: entity
-  derivative:
-    - +
-    - 0
-    - "-"
-  current_derivative: 0
-
-  magnitude:
-    -
-      val: max
-      type: point
-    -
-      val: +
-      type: interval
-    -
-      val: 0
-      type: point
-  current_magnitude: 0
-
 outflow:
   type: entity
   derivative:
     - +
     - 0
     - "-"
-  current_derivative: 0
+  current_derivative: "-"
 
   magnitude:
     -
@@ -52,7 +52,7 @@ outflow:
     -
       val: 0
       type: point
-  current_magnitude: 0
+  current_magnitude: +
 
 
 
@@ -74,6 +74,27 @@ rel3:
   from: volume
   to: outflow
 
+#VC1.1:
+#  type: dependency
+#  restriction: equal
+#  from: volume
+#  to: outflow
+#  from_attr: magnitude
+#  to_attr: magnitude
+#  from_val: max
+#  to_val: max
+#
+#
+#VC2:
+#  type: dependency
+#  restriction: equal
+#  from: volume
+#  to: outflow
+#  from_attr: magnitude
+#  to_attr: magnitude
+#  from_val: 0
+#  to_val: 0
+
 VC1.1:
   type: dependency
   restriction: equal
@@ -84,8 +105,17 @@ VC1.1:
   from_val: max
   to_val: max
 
+#VC1.2:
+#  type: dependency
+#  restriction: equal
+#  from: outflow
+#  to: volume
+#  from_attr: magnitude
+#  to_attr: magnitude
+#  from_val: max
+#  to_val: max
 
-VC2:
+VC2.1:
   type: dependency
   restriction: equal
   from: volume
@@ -95,3 +125,12 @@ VC2:
   from_val: 0
   to_val: 0
 
+#VC2.2:
+#  type: dependency
+#  restriction: equal
+#  from: outflow
+#  to: volume
+#  from_attr: magnitude
+#  to_attr: magnitude
+#  from_val: 0
+#  to_val: 0
