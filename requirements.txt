@@ -1,1 +1,8 @@
-graphviz
+graphviz==0.10.1
+numpy==1.16.2
+pandas==0.24.1
+python-dateutil==2.8.0
+pytz==2018.9
+PyYAML==5.1
+six==1.12.0
+virtualenv==16.4.1
